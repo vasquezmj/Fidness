@@ -1,7 +1,7 @@
 package com.mycompany.fidness;
 
 public class Espalda extends Ejercicio {
-    
+
     private String zonaMuscular;
 
     public Espalda(String zonaMuscular, String nombre, String nivelDificultad, String equipoRequerido, int duracionMinutos) {
@@ -18,6 +18,12 @@ public class Espalda extends Ejercicio {
     }
 
     @Override
+    public String detalles() {
+        String base = super.detalles();
+        return base + "\nZona muscular: " + zonaMuscular + "\nSeries sugeridas: " + cantidadNivel();
+    }
+
+    @Override
     public int calcularCaloriasQuemadas() {
         return cantidadNivel() * duracionMinutos;
     }
@@ -25,19 +31,19 @@ public class Espalda extends Ejercicio {
     @Override
     public String mostrarInstrucciones() {
         return "Instruciones aqui";
-    
+
     }
-    
-    public int cantidadNivel(){
+
+    public int cantidadNivel() {
         String nivel = nivelDificultad;
         if (nivel.equalsIgnoreCase("Avanzado")) {
-            return 10;    
+            return 10;
         } else if (nivel.equalsIgnoreCase("Intermedio")) {
             return 6;
-            
+
         } else {
             return 3;
         }
     }
-    
+
 }

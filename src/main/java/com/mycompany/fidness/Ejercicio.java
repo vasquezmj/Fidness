@@ -1,6 +1,7 @@
 package com.mycompany.fidness;
 
 public abstract class Ejercicio {
+
     protected String nombre;
     protected String nivelDificultad; //Avanzado, Intermedio, Basico
     protected String equipoRequerido;
@@ -12,16 +13,17 @@ public abstract class Ejercicio {
         this.equipoRequerido = equipoRequerido;
         this.duracionMinutos = duracionMinutos;
     }
+
     //metodos
-    public String detalles(){
+    public String detalles() {
         return "Ejercicio: " + nombre + "\nNivel: " + nivelDificultad + "\nEquipo: " + equipoRequerido + "\nDuración: " + duracionMinutos;
     }
-    public abstract int calcularCaloriasQuemadas();
-    public abstract String mostrarInstrucciones();
-    
-    
-    //Getter & Setter
 
+    public abstract int calcularCaloriasQuemadas();
+
+    public abstract String mostrarInstrucciones();
+
+    //Getter & Setter
     public String getNombre() {
         return nombre;
     }
@@ -53,6 +55,10 @@ public abstract class Ejercicio {
     public void setDuracionMinutos(int duracionMinutos) {
         this.duracionMinutos = duracionMinutos;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
 }

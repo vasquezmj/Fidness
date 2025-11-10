@@ -27,7 +27,7 @@ public class InicioSesion {
         usuarioAutenticado = null;
     }
 
-    public Usuario buscarusuario(String nombre) {
+    public Usuario buscarUsuario(String nombre) {
         for (int i = 0; i < usuarios.size(); i++) {
             Usuario u = usuarios.get(i);
             if (u.getNombreUsuario().equalsIgnoreCase(nombre)) {

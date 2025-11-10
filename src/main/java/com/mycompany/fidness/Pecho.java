@@ -16,6 +16,11 @@ public class Pecho extends Ejercicio{
     public void setZonaMuscular(String zonaMuscular) {
         this.zonaMuscular = zonaMuscular;
     }
+    @Override
+    public String detalles() {
+        String base = super.detalles();
+        return base + "\nZona muscular: " + zonaMuscular + "\nSeries sugeridas: " + cantidadNivel();
+    }
 
     @Override
     public int calcularCaloriasQuemadas() {

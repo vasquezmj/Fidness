@@ -162,26 +162,22 @@ public class InicioSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usuarioIntroducido = nombreUsuario.getText();
         String contraseñaIntroducida = new String(contraseña.getPassword());
-
-        List<Usuario> lista = Usuario.leerUsuarios();
-
-        Usuario encontrado = null;
-        for (Usuario user : lista) {
-            if (user.getNombreUsuario().equalsIgnoreCase(usuarioIntroducido)
-                    && user.getContraseña().equals(contraseñaIntroducida)) {
-                encontrado = user;
-                break;
+        try {
+            List<Usuario> usuarios = Usuario.leerUsuarios();
+            com.mycompany.fidness.InicioSesion auten = new com.mycompany.fidness.InicioSesion(usuarios);
+            boolean correcto = auten.inicioSesion(usuarioIntroducido, contraseñaIntroducida);
+            
+            if (correcto) {
+                new Inicio(usuarioIntroducido).setVisible(true);
+                this.dispose();
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No fue posible validar el inicio de sesión.");
         }
-        if (encontrado != null) {
-            JOptionPane.showMessageDialog(null, "credenciales correctas");
-            Inicio ventanaTres = new Inicio(encontrado.getNombreUsuario());
-            ventanaTres.setVisible(true);
-            this.dispose();
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
-        }
+        
         
         // Limpiar campos
         nombreUsuario.setText("");

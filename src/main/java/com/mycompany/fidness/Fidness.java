@@ -10,10 +10,22 @@ import java.util.List;
 public class Fidness {
 
     public static void main(String[] args) {
-        
-        List<Usuario> usuarios = new ArrayList<>();
-        
-        usuarios.add(new Usuario("admin", "1234"));
-        
+
+        try {
+            List<Usuario> usuarios = new ArrayList<>();
+
+            //usuarios precargados
+            usuarios.add(new Usuario("admin", "1234"));
+            usuarios.add(new Usuario("fatima", "abcd"));
+            usuarios.add(new Usuario("mauricio", "5678"));
+
+            Usuario.agregarUsuarioArchivo(usuarios);
+
+            // Abrir GUI principal
+            new GUI.InicioSesion().setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
